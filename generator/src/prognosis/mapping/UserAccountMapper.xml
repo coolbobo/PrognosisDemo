@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mysql.dao.UserAccountMapper" >
+  <resultMap id="BaseResultMap" type="mysql.model.UserAccount" >
+    <id column="id" property="id" jdbcType="TINYINT" />
+    <result column="nickName" property="nickname" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="relatedQQ" property="relatedqq" jdbcType="VARCHAR" />
+    <result column="relatedWechat" property="relatedwechat" jdbcType="VARCHAR" />
+    <result column="relatedAlipay" property="relatedalipay" jdbcType="VARCHAR" />
+    <result column="relatedWeibo" property="relatedweibo" jdbcType="VARCHAR" />
+    <result column="faceid" property="faceid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, nickName, mobile, sex, age, remark, relatedQQ, relatedWechat, relatedAlipay, 
+    relatedWeibo, faceid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Byte" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_account
+    where id = #{id,jdbcType=TINYINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte" >
+    delete from user_account
+    where id = #{id,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" parameterType="mysql.model.UserAccount" >
+    insert into user_account (id, nickName, mobile, 
+      sex, age, remark, relatedQQ, 
+      relatedWechat, relatedAlipay, relatedWeibo, 
+      faceid)
+    values (#{id,jdbcType=TINYINT}, #{nickname,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{relatedqq,jdbcType=VARCHAR}, 
+      #{relatedwechat,jdbcType=VARCHAR}, #{relatedalipay,jdbcType=VARCHAR}, #{relatedweibo,jdbcType=VARCHAR}, 
+      #{faceid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="mysql.model.UserAccount" >
+    insert into user_account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="nickname != null" >
+        nickName,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="relatedqq != null" >
+        relatedQQ,
+      </if>
+      <if test="relatedwechat != null" >
+        relatedWechat,
+      </if>
+      <if test="relatedalipay != null" >
+        relatedAlipay,
+      </if>
+      <if test="relatedweibo != null" >
+        relatedWeibo,
+      </if>
+      <if test="faceid != null" >
+        faceid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=TINYINT},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedqq != null" >
+        #{relatedqq,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedwechat != null" >
+        #{relatedwechat,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedalipay != null" >
+        #{relatedalipay,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedweibo != null" >
+        #{relatedweibo,jdbcType=VARCHAR},
+      </if>
+      <if test="faceid != null" >
+        #{faceid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="mysql.model.UserAccount" >
+    update user_account
+    <set >
+      <if test="nickname != null" >
+        nickName = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedqq != null" >
+        relatedQQ = #{relatedqq,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedwechat != null" >
+        relatedWechat = #{relatedwechat,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedalipay != null" >
+        relatedAlipay = #{relatedalipay,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedweibo != null" >
+        relatedWeibo = #{relatedweibo,jdbcType=VARCHAR},
+      </if>
+      <if test="faceid != null" >
+        faceid = #{faceid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=TINYINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="mysql.model.UserAccount" >
+    update user_account
+    set nickName = #{nickname,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      age = #{age,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      relatedQQ = #{relatedqq,jdbcType=VARCHAR},
+      relatedWechat = #{relatedwechat,jdbcType=VARCHAR},
+      relatedAlipay = #{relatedalipay,jdbcType=VARCHAR},
+      relatedWeibo = #{relatedweibo,jdbcType=VARCHAR},
+      faceid = #{faceid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=TINYINT}
+  </update>
+</mapper>
