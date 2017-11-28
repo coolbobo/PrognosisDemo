@@ -1,5 +1,6 @@
 package prognosis.test;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -12,6 +13,14 @@ public class Testcase
 {
 	private UserServiceI userService;
 	private ApplicationContext ac;
+
+	@Before
+	public void before()
+	{
+		ac = new ClassPathXmlApplicationContext(new String[]
+		{ "spring.xml", "spring-mybatis.xml" });
+		userService = (UserServiceI) ac.getBean("userService");
+	}
 
 	public UserServiceI getUserService()
 	{
@@ -27,12 +36,8 @@ public class Testcase
 	@Test
 	public void test1()
 	{
-		ac = new ClassPathXmlApplicationContext(new String[]
-		{ "spring.xml", "spring-mybatis.xml" });
-		userService = (UserServiceI) ac.getBean("userService");
 		Byte i = 1;
 		UserAccount u = userService.getUserById(i);
-		System.out.println(u.getMobile());
 		System.out.println(u.getNickname());
 
 	}
