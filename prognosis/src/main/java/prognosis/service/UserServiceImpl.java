@@ -8,16 +8,19 @@ import prognosis.model.UserAccount;
 import prognosis.service.UserServiceI;
 
 @Service("userService")
-public class UserServiceImpl implements UserServiceI {
+public class UserServiceImpl implements UserServiceI
+{
 
 	private UserAccountMapper userMapper;
 
-	public UserAccountMapper getUserMapper() {
+	public UserAccountMapper getUserMapper()
+	{
 		return userMapper;
 	}
 
 	@Autowired
-	public void setUserMapper(UserAccountMapper userMapper) {
+	public void setUserMapper(UserAccountMapper userMapper)
+	{
 		this.userMapper = userMapper;
 	}
 
@@ -25,6 +28,5 @@ public class UserServiceImpl implements UserServiceI {
 	{
 		return userMapper.selectByPrimaryKey(id);
 	}
-
 
 }
